@@ -1,0 +1,9 @@
+# mtls-policies/mesh-wide-policy.yaml
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: istio-system  # Mesh-wide in the default Istio root namespace
+spec:
+  mtls:
+    mode: PERMISSIVE

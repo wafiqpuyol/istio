@@ -1,0 +1,21 @@
+# mtls-base-app.yaml
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mtls-policies
+  namespace: argocd
+spec:
+  project: security
+  source:
+    repoURL: https://github.com/wafiqpuyol/istio.git
+    path: "Implement mTLS Configuration with ArgoCD/mtls-policies"
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - ServerSideApply=true
